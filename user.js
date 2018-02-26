@@ -10,7 +10,60 @@
  * Has the user select from a drop down menu of people
  * If their name is not listed, user has the option to add their name
  * Clicks continue to move on to add availability
-*/ 
+*/
+
+function check_and_submit()
+{
+    console.log("in check_and_submit");
+    //Check if the user exists
+    if(user_in_list())
+    {
+        //Tell the user they already exist
+        document.getElementById("info").innerHTML = "User already in user list.";
+    }
+    else
+    {        
+        //Add the given name to list of users
+        submitName();
+        
+        //Outputs "User firstname lastname successfully created!" to info paragraph
+        document.getElementById("info").innerHTML = "User " + 
+                document.getElementById("userFirstName").value.trim() +
+                " " + document.getElementById("userLastName").value.trim() +
+                " successfully created!";      
+    }
+}
+
+function user_in_list()
+{
+    //Grab the input values and remove any whitespace
+    let first_name = document.getElementById("userFirstName").value.trim();
+    let last_name = document.getElementById("userLastName").value.trim();
+    
+    let in_list = false;
+
+    
+    let info = "Given username: " + first_name + " " + last_name + "<br>";
+    info = info + document.getElementById("info").innerHTML + "Checking against.<br>";
+    
+    
+    
+    //Iterate through the list of users and see if the input matches any of them
+    for(let i = 0; i < masterUser.size; i++)
+    {
+        info = info + masterUser.returnAt(i).data.firstName + " " + masterUser.returnAt(i).data.lastName + "<br>";
+        if(masterUser.returnAt(i).data.firstName == first_name && masterUser.returnAt(i).data.lastName == last_name)
+        {
+            in_list = true;
+        }    
+    }
+    
+    document.getElementById("info").innerHTML = info;
+    
+    return in_list;
+}
+
+ 
 
 /**
 * Takes in user input for the username and submits it
@@ -20,6 +73,7 @@ function submitName()  {
     var firstName = document.getElementById("userFirstName").value;
     var lastName = document.getElementById("userLastName").value;
 
+    //Removes any whitespace from input
     firstName = firstName.trim();
     lastName =lastName.trim();
 
@@ -28,8 +82,7 @@ function submitName()  {
         return;
     }
 
-    console.log("second print all");
-    masterUser.printAll();
+    //masterUser.printAll();
     var person = new attendee(lastName,firstName);
     masterUser.add(person);
     var arr = userArray(masterUser);
@@ -50,8 +103,7 @@ function populateUserSelect(id) {
     window.masterUser = populateUser("masterUser");
     unpopulateNames();
     var docfrag = document.createDocumentFragment();
-    console.log("before the loop");
-    window.masterUser.printAll();
+
       for(var i = 0; i < masterUser.size; i++){
 
           /**

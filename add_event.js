@@ -29,7 +29,7 @@ var firstName = '';
 */
 function setName(){
   var name = sessionStorage.getItem("userName");
-  console.log("DEBUG "+ name);
+  //console.log("DEBUG "+ name);
   var i = 0;
   while (name[i] != ' '){
       firstName += name[i];

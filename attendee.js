@@ -38,7 +38,7 @@ attendee.prototype.getLastName = function () {
 *@param none
 *@return none
 */
-attendee.prototype.getFristName = function () {
+attendee.prototype.getFirstName = function () {
   return this.firstName;
 }
 
