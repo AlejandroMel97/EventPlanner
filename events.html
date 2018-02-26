@@ -20,24 +20,45 @@
     <script src="dataIO.js"></script>    
     <title>Events</title>
 </head>
+
 <body onload=" populateEvent('masterEvent'); populateEventSelect('events'); populateAttendeeTable()">
+    
+    <!-- Jumbotron header to webpage -->
     <div class="jumbotron">
         <h1>Events</h1>
         <p>Select an event to see attendees or create an event.</p>
     </div>
     
-    <div class="form-groups">
-        <div class="col-sm-5">
-            <form>
-                Events:<select onchange="unpopulateTable(); populateAttendeeTable()" type="select" name="Events List" id="events">
-            </form>
-        </div>
-    
-        <div class="col-sm-5">
-            <input type="button" value="Create Another Event" id="createEvent" onclick="window.location = 'add_event.html'">
-            <input type=button value="Home" id="back" onclick="window.location = 'user.html'">
-        </div>
+    <!-- Drop down menu that lists events -->
+    <div>
+        <label>Select event &nbsp;</label>
+        <select onchange="unpopulateTable(); populateAttendeeTable()" type="select" name="Events List" id="events">
     </div>
+    
+    <br><br>
+    
+    <!-- Button that lets you see data about chosen event -->
+    <div>
+        <input type="button" value="See event info" id="seeInfo" onclick="show_event_info()">
+    </div>
+        
+    <br><br>
+    
+    <!-- Button that redirects you to create event page -->
+    <div>
+        <input type="button" value="Create Another Event" id="createEvent" onclick="window.location = 'add_event.html'">
+    </div>
+    
+    <br><br>
+    
+    <!-- Button that takes you back to the home page -->
+    <div>    
+        <input type=button value="Home" id="back" onclick="window.location = 'user.html'">
+    </div>
+       
+    <br><br>
+    
+    <!-- Table that populates with attendees of chosen event --> 
     <div>
         <table name="attendeeTable" id="attendeeTable">
             <thead>
@@ -50,5 +71,6 @@
             </tbody>
         </table>
     </div>
+    
 </body>
 </html>

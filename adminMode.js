@@ -79,13 +79,15 @@ function populateAttendeeTable() {
 	
 	var event = document.getElementById("events").value;
 	
-	var firstName = "";
-	var lastName = "";
+	var firstName;
+	var lastName;
+    
+    //window[event] is now a linkedlist read from the event info or something??
 	window[event] = populateUser(event);
 
-	//console.log("DEBUG: masterUser size = "+ window[event].size);
 	for(var i = 0; i < window[event].size; i++) {
 		
+        //Iterates through linked list and gets all the users that have signed up and adds those to table
 		var node = window[event].returnAt(i);
 		firstName = node.data.firstName;
 		lastName = node.data.lastName;
