@@ -274,13 +274,9 @@ function populateEvent() {
 *@returns list
 */
 function populateUser(name) {
-  // var listNumber=1;
-  // var listName = eval("var list" + listNumber + "=123;");
-  // listName = new linkedlist;
-  //listName.add(name);
+
   window[name]= new linkedlist;
-  //var list = new linkedlist;
-  //list[name];
+  
   var mU = readData(name);
     if (mU[0] == null) {
     var arr = new Array;

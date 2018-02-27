@@ -26,7 +26,6 @@ function setName(){
     lastName += name[i];
     i++;
   } // end while
-    //console.log("this is the name now: " + window.firstName  + ' ' + window.lastName);
 }
 
 
@@ -65,55 +64,44 @@ function addRow(title, date, time) {
  */
 function loadEvents(){
 
-  var month = '';
-  var year = '';
-  var day = '';
-  var date = '';
-  var startHours ='';
-  var startMin = '';
-  var endHours = '';
-  var endMin = '';
-  var timeString = '';
-  for (var i = 0; i < masterEvent.size; i++){
-    var node = masterEvent.returnAt(i);
-    date = node.data.date;
-    month = date.getMonth() + 1;
-    year = date.getFullYear();
-    day = date.getDate();
-    startHours = date.getHours();
-    startMin = date.getMinutes();
-    endHours = Math.floor((node.data.len)/60) + startHours;
-    endMin = (node.data.len)%60;
-    timeString = startHours + ':' + startMin + ' to ' + endHours + ':' + endMin;
-    addRow(node.data.title, month+'/'+day+'/'+year,timeString);
-  }
-  if (masterEvent.size == 0){
-    document.getElementById("list").innerHTML = "No events at this time";
-  }
-
-
-  /**
-   * Check to see what events the user is going to
-   */
-  var checkBoxArray = document.getElementById("eventTable").getElementsByTagName("INPUT");
-
-  for (var i = 0; i < masterEvent.size; i++){
-
-    var node = masterEvent.returnAt(i);
-    var eventTitle = node.data.title;
-    window[eventTitle] = populateUser(eventTitle);
-    var attending = window[eventTitle].search(lastName);
-
-    // console.log("print ALL in load users");
-    // window[eventTitle].printAll();
-
-
-    // console.log("Searching for: " + lastName + " in " + eventTitle);
-    // console.log("attending = " + attending);
-    if (attending){
-      checkBoxArray[i].hidden = true;
+    //var has function scope so it's fine to declare them in for block
+    for (let i = 0; i < masterEvent.size; i++){
+        var node = masterEvent.returnAt(i);
+        var date = node.data.date;
+        var month = date.getMonth() + 1;
+        var year = date.getFullYear();
+        var day = date.getDate();
+        var startHours = date.getHours();
+        var startMin = date.getMinutes();
+        var endHours = Math.floor((node.data.len)/60) + startHours;
+        var endMin = (node.data.len)%60;
+        var timeString = startHours + ':' + startMin + ' to ' + endHours + ':' + endMin;
+        
+        addRow(node.data.title, month+'/'+day+'/'+year,timeString);
     }
-  }
+    
+    if (masterEvent.size == 0)
+    {
+        document.getElementById("list").innerHTML = "No events at this time";
+    }
+
+
+    //Check to see if user is going to event??
+    var checkBoxArray = document.getElementById("eventTable").getElementsByTagName("INPUT");
+
+    for (var i = 0; i < masterEvent.size; i++)
+    {
+
+        var node = masterEvent.returnAt(i);
+        var eventTitle = node.data.title;
+        window[eventTitle] = populateUser(eventTitle);
+        var attending = window[eventTitle].search(lastName);
+        
+        if (attending)
+        {
+            checkBoxArray[i].hidden = true;
+        }
+    }
 }
 
 /**

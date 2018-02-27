@@ -21,42 +21,38 @@
     <title>Events</title>
 </head>
 
-<body onload=" populateEvent('masterEvent'); populateEventSelect('events')">
+<body onload="populateEvent('masterEvent'); show_event_info()">
     
     <!-- Jumbotron header to webpage -->
     <div class="jumbotron">
-        <h1>Events</h1>
-        <p>Select an event to see attendees or create an event.</p>
+        <h1 id="chosen_event_header">Event name here</h1>
     </div>
-    
-    <!-- Drop down menu that lists events -->
-    <div>
-        <label>Select event &nbsp;</label>
-        <select type="select" name="Events List" id="events">
-    </div>
-    
+        
     <br><br>
     
-    <!-- Button that lets you see data about chosen event -->
-    <div>
-        <input type="button" value="See event info" id="seeInfo" onclick="event_passer()">
-    </div>    
-    
-    <br><br>
-    
-    <!-- button that redirects you to create event page -->
-    <div>
-        <input type="button" value="Create Another Event" id="createEvent" onclick="window.location = 'add_event.html'">
+    <!-- show_event_info() populates this div with info about selected event -->
+        
+    <div id="event_info" style="display:flex; justify-content:center">
+            
+        <!-- Event Name -->
+            
+        <!-- Created by: Username here -->
+            
+        <!-- Table of dates, times, and who can attend when -->
+            
+        <table id="event_table" border="1" padding="5px">
+            <tr id="headers">
+                <th>Date &nbsp; &nbsp; &nbsp;</th>
+                <th>Time &nbsp; &nbsp; &nbsp;</th>
+                <th>Available &nbsp; &nbsp;</th>
+            </tr>    
+        </table>
+        
     </div>
-    
+        
+        
     <br><br>
-    
-    <!-- Button that takes you back to the home page -->
-    <div>    
-        <input type=button value="Home" id="back" onclick="window.location = 'user.html'">
-    </div>
-       
-    <br><br>
+
     
 
     
