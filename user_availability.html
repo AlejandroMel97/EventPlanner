@@ -23,6 +23,10 @@
 
     <title>Select Event</title>
 </head>
+
+<!-- populateEvent in dataIO.js reads in data and fills masterEvent with all the events. setName from user_availability.js grabs
+     name from session storage and sets first name and last name (variables in user_availability.js) to be the name. loadEvents in 
+     user_availability.js iterates through masterEvent and populates table with all event data -->
 <body onload = "populateEvent(); setName(); loadEvents()">
 
 
