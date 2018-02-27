@@ -12,10 +12,10 @@
 function populateEventSelect(id) {
 
 
-	console.log("DEBUG: ran populateEventSelect");
+	//console.log("DEBUG: ran populateEventSelect");
     unpopulateEvents();
     var docfrag = document.createDocumentFragment();
-	console.log(masterEvent.size);
+	//console.log(masterEvent.size);
 
       for(var i = 0; i < masterEvent.size; i++){
 
@@ -25,7 +25,7 @@ function populateEventSelect(id) {
 
           var node = masterEvent.returnAt(i);
           var event = node.data.title;
-          console.log(event);
+          //console.log(event);
 
           docfrag.appendChild(new Option(event));
 
@@ -59,7 +59,7 @@ function unpopulateEvents(){
  */
 function addRow(name) {
 
-	console.log("ran addRow");
+	//console.log("ran addRow");
 
     var table = document.getElementById("attendeeTable");
 
@@ -83,7 +83,7 @@ function populateAttendeeTable() {
 	var lastName = "";
 	window[event] = populateUser(event);
 
-	console.log("DEBUG: masterUser size = "+ window[event].size);
+	//console.log("DEBUG: masterUser size = "+ window[event].size);
 	for(var i = 0; i < window[event].size; i++) {
 		
 		var node = window[event].returnAt(i);
@@ -103,7 +103,7 @@ function unpopulateTable() {
 
 
 	var table = document.getElementById("attendeeTable");
-	console.log(table);
+	//console.log(table);
 	for(var i = table.rows.length - 1; i > 0; i--)
 	{
 		table.deleteRow(i);

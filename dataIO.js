@@ -46,26 +46,23 @@ function writeData(arr, num, name) {
   //console.log(arr.length);
   //console.log("num: " + num);
 
-  for (var i = 0; i < arr.length; i+=num){
-
-    //console.log("i: "+ i + '\n');
+  for (var i = 0; i < arr.length; i+=num)
+  {
     line = '';
-    for(var j = 0; j < num; j++){
-
-      //console.log("j: " + j + '\n');
-
-      if (j == num-1){
+    
+    for(var j = 0; j < num; j++)
+    {
+      if (j == num-1)
+      {
         line += arr[i+j];
-        //console.log("inside if of j");
-      } // end if
-
-      else {
+      }
+      else
+      {
         line += arr[i+j] + '@';
-        //console.log("inside else of j");
-      } // end else
-    } // end for j
+      }
+    }
     doc += line + ' ';
-  } // end for i
+  }
 
   //console.log(doc);
   localStorage.setItem(name, doc);
