@@ -28,3 +28,12 @@ var masterEvent = new linkedlist();
 * @property {global} list
 */
 var masterUser = new linkedlist();
+
+function clear_local_storage()
+{
+    //clear local storage
+    localStorage.clear();
+    
+    //refresh the page
+    location.reload();
+}
